@@ -91,7 +91,7 @@ esac
 
 }
 
-Function to validate input
+# Function to validate input
 
 validate_input() {
 local type=$1
