@@ -46,7 +46,9 @@ pause_screen() {
 
 display_header() {
     clear 2>/dev/null || true
-    cat <<'EOF'
+    print '\n'
+    printf '\033[1;35m==============================================================\033[0m\n'
+  cat <<'EOF'
       _                 _             _   _                    
      | |  _   _   ___  | |_  __   __ (_) | |__   __  __  _ __  
   _  | | | | | | / __| | __| \ \ / / | | | '_ \  \ \/ / | '_ \ 
@@ -54,11 +56,11 @@ display_header() {
   \___/   \__,_| |___/  \__|   \_/   |_| |_| |_| /_/\_\ |_| |_|
     EOF
       echo
-    printf '\033[1;35m==============================================================\033[0m\n'
+    print '\n'
     printf '                 Justvihxn VM MANAGER v%s\n' "$VERSION"
     printf '              QEMU • KVM • Cloud-Init • Linux\n'
     printf '\033[1;35m==============================================================\033[0m\n\n'
-
+    print '\n'
     printf ' Hostname     : %s\n' "$(hostname)"
     printf ' User         : %s\n' "$(whoami)"
     printf ' Kernel       : %s\n' "$(uname -r)"
