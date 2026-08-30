@@ -58,7 +58,7 @@ EOF
     printf '                 Justvihxn VM MANAGER v%s\n' "$VERSION"
     printf '              QEMU • KVM • Cloud-Init • Linux\n'
     printf '\033[1;35m==============================================================\033[0m\n\n'
-    print '\n'
+    printf '\n'
     printf ' Hostname     : %s\n' "$(hostname)"
     printf ' User         : %s\n' "$(whoami)"
     printf ' Kernel       : %s\n' "$(uname -r)"
