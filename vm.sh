@@ -1,14 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-╔══════════════════════════════════════════════════════════════╗
-
-║                  Justvihxn VM MANAGER                  ║
-
-║            Professional Multi-VM Virtualization             ║
-
-╚══════════════════════════════════════════════════════════════╝
-
 display_header() {
 clear
 tput civis
