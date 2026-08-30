@@ -68,13 +68,13 @@ printf "\e[1;36m Time          \e[0m : %s\n" "$(date '+%I:%M:%S %p')"
 printf "\e[1;35m────────────────────────────────────────────────────────────────────────────────────\e[0m\n"  
 
 echo  
-printf "\e[1;32m                  AalixanCodes VM MANAGER v5.0\e[0m\n"  
+printf "\e[1;32m                  Justvihxn VM MANAGER v5.0\e[0m\n"  
 printf "\e[1;90m               Enterprise Virtualization Platform\e[0m\n"  
 echo
 
 }
 
-Function to display colored output
+# Function to display colored output
 
 print_status() {
 local type=$1
