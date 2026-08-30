@@ -46,14 +46,16 @@ pause_screen() {
 
 display_header() {
     clear 2>/dev/null || true
-
+    cat <<'EOF'
+      _                 _             _   _                    
+     | |  _   _   ___  | |_  __   __ (_) | |__   __  __  _ __  
+  _  | | | | | | / __| | __| \ \ / / | | | '_ \  \ \/ / | '_ \ 
+ | |_| | | |_| | \__ \ | |_   \ V /  | | | | | |  >  <  | | | |
+  \___/   \__,_| |___/  \__|   \_/   |_| |_| |_| /_/\_\ |_| |_|
+    EOF
+      echo
     printf '\033[1;35m==============================================================\033[0m\n'
-    printf '                      _                 _             _   _          '          
-    printf '    | |  _   _   ___  | |_  __   __ (_) | |__   __  __  _ __  '
-    printf ' _  | | | | | | / __| | __| \ \ / / | | | '_ \  \ \/ / | '_ \ '
-    printf '| |_| | | |_| | \__ \ | |_   \ V /  | | | | | |  >  <  | | | | '
-    printf ' \___/   \__,_| |___/  \__|   \_/   |_| |_| |_| /_/\_\ |_| |_| '
-    printf '                                                                      '
+    printf '                 Justvihxn VM MANAGER v%s\n' "$VERSION"
     printf '              QEMU • KVM • Cloud-Init • Linux\n'
     printf '\033[1;35m==============================================================\033[0m\n\n'
 
@@ -61,7 +63,6 @@ display_header() {
     printf ' User         : %s\n' "$(whoami)"
     printf ' Kernel       : %s\n' "$(uname -r)"
     printf ' Architecture : %s\n' "$(uname -m)"
-    printf '\n'
 }
 
 # -------------------- Validation --------------------
