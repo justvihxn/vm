@@ -998,7 +998,10 @@ show_vm_performance() {
 
 select_vm() {
     local prompt="${1:-VM number:}"
-    local vm_num selected
+    local vm_num
+    local i status
+
+    SELECTED_VM=""
 
     mapfile -t VMS < <(get_vm_list)
 
@@ -1008,8 +1011,6 @@ select_vm() {
     fi
 
     echo
-    local i status
-
     for i in "${!VMS[@]}"; do
         if is_vm_running "${VMS[$i]}"; then
             status="Running"
@@ -1026,15 +1027,14 @@ select_vm() {
 
         if validate_number "$vm_num" &&
            ((10#$vm_num >= 1 && 10#$vm_num <= ${#VMS[@]})); then
-            selected="${VMS[$((10#$vm_num - 1))]}"
-            printf '%s\n' "$selected"
+
+            SELECTED_VM="${VMS[$((10#$vm_num - 1))]}"
             return 0
         fi
 
         print_status ERROR "Invalid VM number"
     done
 }
-
 # -------------------- Main menu --------------------
 
 main_menu() {
@@ -1089,20 +1089,20 @@ main_menu() {
                 pause_screen
                 ;;
             2)
-                if selected="$(select_vm "VM number: ")"; then
-                    start_vm "$selected"
+                if select_vm "VM number: "; then
+                     start_vm "$SELECTED_VM"
                 fi
                 pause_screen
                 ;;
             3)
-                if selected="$(select_vm "VM number: ")"; then
-                    stop_vm "$selected"
+                if select_vm "VM number: "; then
+                    stop_vm "$SELECTED_VM"
                 fi
                 pause_screen
                 ;;
             4)
-                if selected="$(select_vm "VM number: ")"; then
-                    show_vm_info "$selected"
+                if select_vm "VM number: "; then
+                    edit_vm_config "$SELECTED_VM"
                 fi
                 pause_screen
                 ;;
@@ -1113,20 +1113,20 @@ main_menu() {
                 pause_screen
                 ;;
             6)
-                if selected="$(select_vm "VM number: ")"; then
-                    delete_vm "$selected"
+                if select_vm "VM number: "; then
+                    delete_vm "$SELECTED_VM"
                 fi
                 pause_screen
                 ;;
             7)
-                if selected="$(select_vm "VM number: ")"; then
-                    resize_vm_disk "$selected"
+                if select_vm "VM number: "; then
+                    resize_vm_disk "$SELECTED_VM"
                 fi
                 pause_screen
                 ;;
             8)
-                if selected="$(select_vm "VM number: ")"; then
-                    show_vm_performance "$selected"
+                if select_vm "VM number: "; then
+                   show_vm_performance "$SELECTED_VM"
                 fi
                 pause_screen
                 ;;
